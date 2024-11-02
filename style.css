@@ -2,48 +2,51 @@
 @tailwind components;
 @tailwind utilities; */
 
+:root {
+  --orange: hsl(35, 77%, 62%);
+  --red: hsl(5, 85%, 63%);
+  --white: hsl(36, 100%, 99%);
+  --gray: hsl(233, 8%, 79%);
+  --dark: hsl(236, 13%, 42%);
+  --black: hsl(240, 100%, 5%);
+}
+
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/static/Inter-Bold.ttf') format('truetype');
-  font-weight: 700; 
+  font-family: "Inter";
+  src: url("/fonts/static/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/static/Inter-ExtraBold.ttf') format('truetype');
-  font-weight: 800; 
+  font-family: "Inter";
+  src: url("/fonts/static/Inter-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
   font-style: normal;
 }
 
-
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/static/Inter-Regular.ttf') format('truetype');
+  font-family: "Inter";
+  src: url("/fonts/static/Inter-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
-
 @font-face {
-  font-family: 'Inter Variable';
-  src: url('/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
-  font-weight: 100 900; 
+  font-family: "Inter Variable";
+  src: url("/fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+  font-weight: 100 900;
   font-style: normal;
 }
-
-
 
 * {
   box-sizing: border-box;
   font-family: Inter, sans-serif;
-  /* border: 1px solid black;  */
 }
-
 
 .container {
   margin: 2rem auto;
-  width: 80%; 
+  width: 80%;
   display: grid;
   column-gap: 1.5rem;
   grid-template-areas:
@@ -51,25 +54,59 @@
     "divPic     divPic   aside"
     "main1    main2   aside"
     "news1 news2  news3";
-    grid-template-columns: .8fr .8fr .8fr;
-  grid-template-rows: auto  auto auto auto; 
-    
+  grid-template-columns: 0.8fr 0.8fr 0.8fr;
+  grid-template-rows: auto auto auto auto;
 }
 
+.hamburguer-logo {
+  display: none;
+}
 
+nav {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (width < 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "divPic"
+      "main1"
+      "main2"
+      "aside"
+      "news1"
+      "news2"
+      "news3";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  picture {
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 2rem;
+    grid-area: divPic;
+  }
+  .hamburguer-logo {
+    all: unset;
+    display: block;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+  }
+  .article button {
+    margin-bottom: 3rem;
+  }
+}
 
 .container header {
   display: flex;
-  padding-block: 1.5rem; 
+  padding-block: 1.5rem;
   justify-content: space-between;
   grid-area: header;
-  background-color: white;
-}
-
-
-nav{
-  display: flex;
-  gap: 2rem 
+  background-color: var(--white);
 }
 
 .container .front-picture {
@@ -83,14 +120,11 @@ nav{
 
 .front-picture img {
   max-width: 100%;
-  /* max-height: 100%; */
- 
 }
 
 .title {
-  
   padding-right: 4rem;
-  font-size: 1.3rem; 
+  font-size: 1.3rem;
   font-weight: 800;
   grid-area: main1;
 }
@@ -98,30 +132,29 @@ nav{
 .article {
   grid-area: main2;
   padding-right: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .article p {
   font-size: 0.7rem;
   text-justify: auto;
   line-height: 1.3rem;
   margin-bottom: 1rem;
-  
 }
 
 .article button {
   padding-inline: 1.5rem;
   padding-block: 0.5rem;
-  letter-spacing: .2rem;
-  background-color: salmon;
-  border: none; 
+  letter-spacing: 0.2rem;
+  background-color: var(--red);
+  border: none;
   max-width: 60%;
 }
 
-.article button:hover{
-  color: white; 
-  background-color: black;
+.article button:hover {
+  color: var(--white);
+  background-color: var(--black);
   cursor: pointer;
 }
 
@@ -146,50 +179,50 @@ nav{
   flex-direction: column;
   align-items: center;
   grid-area: aside;
-  color: white; 
-  background-color: black; 
-  padding: 1rem; 
+  color: var(--white);
+  background-color: var(--black);
+  padding: 1rem;
 }
 
 aside p {
-  font-size: .8rem; 
+  font-size: 0.8rem;
   line-height: 1.5rem;
 }
 
 aside > h1 {
-  color: gold; 
-  align-self: start; 
-  margin-bottom: .6rem;
+  color: var(--orange);
+  align-self: start;
+  margin-bottom: 0.6rem;
 }
 
 aside a {
-  color: white; 
+  color: white;
 }
 
 aside a:hover {
-  color: gold; 
+  color: var(--orange);
 }
 
-aside article h1  {
+aside article h1 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
-a{
+a {
   text-decoration: none;
-  color: black; 
+  color: var(--black);
 }
 
 a:hover {
-color: salmon; 
+  color: var(--red);
 }
 
 .news {
- display: flex;
- width: 100%;
- align-items: stretch;
- max-height: 100px ;
- margin-top: 3rem
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  max-height: 100px;
+  margin-top: 3rem;
 }
 
 article > img {
@@ -206,14 +239,14 @@ article > img {
 }
 
 .imgArticle h1 {
-  color: salmon; 
+  color: var(--red);
 }
 
 .imgArticle h2 {
-  font-size: 1rem
+  font-size: 1rem;
 }
 .imgArticle p {
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 1.2rem;
 }
 
@@ -223,17 +256,18 @@ img {
   display: block;
 }
 
-h1, h2, p {
-  margin: 0; 
+h1,
+h2,
+p {
+  margin: 0;
 }
 
 .line {
-  border: .01rem solid white;
-  width: 100%; 
+  border: 0.01rem solid var(--white);
+  width: 100%;
   margin-top: 2rem;
-  
 }
 
 .line-2 {
-  border-color: grey; 
+  border-color: var(--gray);
 }
